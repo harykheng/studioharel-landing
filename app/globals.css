@@ -258,3 +258,19 @@ textarea {
     margin-top: 20px;
   }
 }
+
+/* Featured portfolio card (Breva Cafe): two columns on desktop, stacked
+   image-first layout matching the other portfolio cards on mobile */
+.featured-card {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+}
+
+@media (max-width: 720px) {
+  .featured-card {
+    grid-template-columns: 1fr;
+    align-items: stretch !important;
+  }
+  .featured-card-image {
+    order: -1;
+  }
+}
