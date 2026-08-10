@@ -173,3 +173,88 @@ textarea {
     scroll-behavior: auto;
   }
 }
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(33, 197, 212, 0), 0 0 0 0 rgba(22, 74, 248, 0);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(33, 197, 212, 0.3), 0 0 16px 4px rgba(22, 74, 248, 0.6);
+    border-color: var(--cyan-400);
+  }
+}
+
+.btn-glow {
+  animation: glow-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow {
+    animation: none;
+  }
+}
+
+/* Responsive nav: collapse the link row into a hamburger + dropdown below 720px */
+.site-nav-mobile-panel {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 var(--gutter);
+  max-height: 0;
+  overflow: hidden;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-top: 0 solid var(--border-subtle);
+  transition: max-height var(--duration-base) var(--ease-out), padding var(--duration-base) var(--ease-out);
+}
+
+@media (max-width: 720px) {
+  .site-nav-links {
+    display: none !important;
+  }
+  .site-nav-toggle {
+    display: inline-flex !important;
+  }
+  .site-nav-mobile-panel {
+    display: flex;
+  }
+  .site-nav-mobile-panel.open {
+    max-height: 220px;
+    padding: 14px var(--gutter) 18px;
+    border-top-width: 1px;
+  }
+}
+
+/* Responsive "masalah" section: scattered absolute quote cards become a
+   stacked flow below the breakpoint where they'd otherwise overlap the heading */
+.masalah-card {
+  position: absolute;
+  display: block;
+}
+.masalah-card-1 {
+  top: 2%;
+  left: -4%;
+}
+.masalah-card-2 {
+  top: 10%;
+  right: -6%;
+}
+.masalah-card-3 {
+  bottom: 6%;
+  left: -2%;
+}
+.masalah-card-4 {
+  bottom: 0%;
+  right: -3%;
+}
+
+@media (max-width: 860px) {
+  .masalah-card {
+    position: static;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

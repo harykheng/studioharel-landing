@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Badge, Tag } from "@/components/Badge";
 import { Button } from "@/components/Button";
@@ -29,6 +30,8 @@ const cardStyle: React.CSSProperties = {
 };
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div style={{ background: "var(--surface-page)", minHeight: "100vh", position: "relative" }}>
       {/* Header */}
@@ -66,16 +69,46 @@ export default function Home() {
             >
             </span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 13, color: "var(--text-secondary)" }}>
+          <div className="site-nav-links" style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 13, color: "var(--text-secondary)" }}>
             <a href="#layanan" style={{ color: "inherit" }}>Layanan</a>
             <span style={{ color: "var(--text-tertiary)" }}>&amp;</span>
             <a href="#portofolio" style={{ color: "inherit" }}>Portofolio</a>
             <span style={{ color: "var(--text-tertiary)" }}>&amp;</span>
             <a href="#kontak" style={{ color: "inherit" }}>Kontak</a>
           </div>
-          <Button variant="primary" size="sm" onClick={openWA}>
-            Chat
-          </Button>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <button
+              type="button"
+              className="site-nav-toggle"
+              aria-label={menuOpen ? "Tutup menu" : "Buka menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              style={{
+                display: "none",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 36,
+                height: 36,
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border-subtle)",
+                background: "var(--surface-chip)",
+                color: "var(--text-primary)",
+                cursor: "pointer",
+                fontSize: 18,
+              }}
+            >
+              <i className={`ph-bold ${menuOpen ? "ph-x" : "ph-list"}`} />
+            </button>
+            <Button variant="primary" size="sm" glow onClick={openWA}>
+              <i className="ph-bold ph-whatsapp-logo" style={{ fontSize: 16 }} />
+              Chat
+            </Button>
+          </div>
+        </div>
+        <div className={`site-nav-mobile-panel${menuOpen ? " open" : ""}`}>
+          <a href="#layanan" onClick={() => setMenuOpen(false)}>Layanan</a>
+          <a href="#portofolio" onClick={() => setMenuOpen(false)}>Portofolio</a>
+          <a href="#kontak" onClick={() => setMenuOpen(false)}>Kontak</a>
         </div>
       </div>
 
@@ -285,23 +318,23 @@ export default function Home() {
             kalian gak sendiri
           </Reveal>
 
-          <Reveal index={2} style={{ position: "absolute", top: "2%", left: "-4%", display: "block" }}>
-            <Parallax factor={0.07}>
+          <Reveal index={2} className="masalah-card masalah-card-1">
+            <Parallax factor={0.07} disableBelow={860}>
               <QuoteCard icon="ph-storefront" quote="Belum punya website, calon customer susah percaya toko kami serius" />
             </Parallax>
           </Reveal>
-          <Reveal index={3} style={{ position: "absolute", top: "10%", right: "-6%", display: "block" }}>
-            <Parallax factor={-0.05}>
+          <Reveal index={3} className="masalah-card masalah-card-2">
+            <Parallax factor={-0.05} disableBelow={860}>
               <QuoteCard icon="ph-wrench" quote="Udah punya website tapi susah diupdate sendiri, harus selalu minta bantuan orang" />
             </Parallax>
           </Reveal>
-          <Reveal index={4} style={{ position: "absolute", bottom: "6%", left: "-2%", display: "block" }}>
-            <Parallax factor={-0.08}>
+          <Reveal index={4} className="masalah-card masalah-card-3">
+            <Parallax factor={-0.08} disableBelow={860}>
               <QuoteCard icon="ph-receipt" quote="Butuh sistem stok & invoice tapi masih manual di Excel, sering selisih data" />
             </Parallax>
           </Reveal>
-          <Reveal index={5} style={{ position: "absolute", bottom: "0%", right: "-3%", display: "block" }}>
-            <Parallax factor={0.09}>
+          <Reveal index={5} className="masalah-card masalah-card-4">
+            <Parallax factor={0.09} disableBelow={860}>
               <QuoteCard icon="ph-heart" quote="Mau bikin undangan online tapi budget vendor terlalu mahal" />
             </Parallax>
           </Reveal>

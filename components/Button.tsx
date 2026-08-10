@@ -52,6 +52,7 @@ export function Button({
   variant = "primary",
   size = "md",
   disabled = false,
+  glow = false,
   onClick,
   style,
 }: {
@@ -59,6 +60,7 @@ export function Button({
   variant?: "primary" | "secondary" | "ghost";
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
+  glow?: boolean;
   onClick?: () => void;
   style?: CSSProperties;
 }) {
@@ -74,6 +76,7 @@ export function Button({
       onMouseLeave={() => setHover(false)}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
+      className={glow && !disabled ? "btn-glow" : undefined}
       style={{
         ...base,
         ...sizes[size],

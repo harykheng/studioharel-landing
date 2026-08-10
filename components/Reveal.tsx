@@ -8,11 +8,13 @@ export function Reveal({
   index = 0,
   children,
   style,
+  className,
   as = "div",
 }: {
   index?: number;
   children: ReactNode;
   style?: CSSProperties;
+  className?: string;
   as?: RevealTag;
 }) {
   const Tag = as as RevealTag;
@@ -57,6 +59,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref as never}
+      className={className}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(22px)",

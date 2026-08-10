@@ -5,11 +5,16 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 export function Parallax({
   factor,
   centered = false,
+  disableBelow,
   style,
   children,
 }: {
   factor: number;
   centered?: boolean;
+  /** Viewport width (px) below which the parallax offset is skipped — for
+   * elements whose desktop-only absolute layout collapses to normal flow
+   * on small screens (see .masalah-card in globals.css). */
+  disableBelow?: number;
   style?: CSSProperties;
   children?: ReactNode;
 }) {
@@ -34,6 +39,10 @@ export function Parallax({
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = null;
+        if (disableBelow && window.innerWidth <= disableBelow) {
+          node.style.transform = centered ? "translateX(-50%)" : "";
+          return;
+        }
         const y = window.scrollY;
         const vh = window.innerHeight;
         const rel = y + vh / 2 - base;
@@ -52,7 +61,7 @@ export function Parallax({
       window.removeEventListener("resize", onScroll);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [factor, centered]);
+  }, [factor, centered, disableBelow]);
 
   return (
     <div ref={ref} style={style}>

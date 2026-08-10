@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 export function UnderlineHighlight({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLSpanElement | null>(null);
@@ -30,23 +30,24 @@ export function UnderlineHighlight({ children }: { children: ReactNode }) {
     return () => io.disconnect();
   }, []);
 
+  // Underline is a background gradient (not an absolutely-positioned bar) with
+  // box-decoration-break: clone so it draws separately under each wrapped
+  // line instead of stretching across the whole multi-line bounding box.
+  const style: CSSProperties = {
+    color: "var(--blue-500)",
+    backgroundImage: "linear-gradient(var(--accent-primary), var(--accent-primary))",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "0 100%",
+    backgroundSize: drawn ? "100% 3px" : "0% 3px",
+    paddingBottom: 6,
+    boxDecorationBreak: "clone",
+    WebkitBoxDecorationBreak: "clone",
+    transition: "background-size .9s var(--ease-out) .9s",
+  };
+
   return (
-    <span ref={ref} style={{ position: "relative", display: "inline-block", color: "var(--blue-500)" }}>
+    <span ref={ref} style={style}>
       {children}
-      <span
-        style={{
-          position: "absolute",
-          left: 0,
-          bottom: -6,
-          width: "100%",
-          height: 3,
-          borderRadius: 2,
-          background: "var(--accent-primary)",
-          transform: drawn ? "scaleX(1)" : "scaleX(0)",
-          transformOrigin: "left",
-          transition: "transform .7s var(--ease-out) .3s",
-        }}
-      />
     </span>
   );
 }
