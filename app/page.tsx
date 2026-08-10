@@ -11,11 +11,11 @@ import { UnderlineHighlight } from "@/components/UnderlineHighlight";
 
 const logoMark = "/assets/logo-mark.png";
 const brevaCafeFlow = "/assets/breva-cafe-flow.png";
-const weddingInvitation = "/assets/wedding-invitation.png";
+const stockManagementDashboard = "/assets/wedding-invitation.png";
 const landingDigitalProduct = "/assets/landing-digital-product.png";
-const stockManagementDashboard = "/assets/stock-management-dashboard.png";
+const weddingInvitation = "/assets/stock-management-dashboard.png";
 
-const openWA = () => window.open("https://wa.me/6280000000000", "_blank", "noopener");
+const openWA = () => window.open("https://wa.me/6281292567788", "_blank", "noopener");
 const goPortfolio = () => {
   window.location.hash = "portofolio";
 };
@@ -64,7 +64,6 @@ export default function Home() {
                 color: "var(--text-primary)",
               }}
             >
-              Studio Harel
             </span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 18, fontSize: 13, color: "var(--text-secondary)" }}>
@@ -397,9 +396,9 @@ export default function Home() {
         </Reveal>
 
         <Reveal index={1} style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-16)", marginBottom: "var(--space-20)" }}>
-          <StatBlock value="4" label="Project live" caption="Dari landing page sampai dashboard custom." />
-          <StatBlock value="100" unit="%" label="Kode ditulis tangan" caption="Tanpa page builder, tanpa template asal comot." />
-          <StatBlock value="<7" label="Hari revisi" caption="Perubahan kecil dibalas cepat, bukan antre tiket." />
+          <StatBlock value="6" label="Project live" caption="Dari landing page sampai dashboard custom." />
+          <StatBlock value="100" unit="%" label="Custom, Bukan Template" caption="Sesuai kebutuhanmu, bukan template siap pakai." />
+          <StatBlock value="<7" label="Waktu revisi" caption="Perubahan kecil, respons cepat" />
         </Reveal>
 
         <Reveal index={2} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "var(--space-6)" }}>
@@ -447,8 +446,8 @@ export default function Home() {
           </div>
           <div style={{ ...cardStyle, padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <Image
-              src={weddingInvitation}
-              alt="Website undangan pernikahan Jim & Pam dengan galeri foto dan detail acara"
+              src={stockManagementDashboard}
+              alt="Dashboard manajemen stok custom dengan laporan laba rugi dan penjualan"
               width={1200}
               height={628}
               style={{ width: "100%", height: "auto", borderRadius: "var(--radius-md, 10px)", display: "block" }}
@@ -456,18 +455,24 @@ export default function Home() {
             />
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
-                Wedding Invitation
+                Stock Management — Custom Dashboard
               </h3>
               <Tag tone="accent">LIVE</Tag>
             </div>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
-              Undangan pernikahan berbasis website, lengkap dengan galeri foto dan detail acara.
+              Cocok untuk yang punya gudang/distributor yang belum ada dashboard management stock.
             </p>
             <a
-              href="#"
+              href="https://erp-distributor.vercel.app/"
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
-              Lihat demo <i className="ph-thin ph-arrow-up-right" />
+              Lihat demo Distribusi <i className="ph-thin ph-arrow-up-right" />
+            </a>
+            <a
+              href="https://erp-demo-lovat.vercel.app/"
+              style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              Lihat demo Kedai Kopi<i className="ph-thin ph-arrow-up-right" />
             </a>
           </div>
           <div style={{ ...cardStyle, padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
@@ -489,16 +494,22 @@ export default function Home() {
               Cocok untuk penjualan digital product atau penjualan barang tertentu — order langsung via WhatsApp.
             </p>
             <a
-              href="#"
+              href="https://porto-studio-harel.vercel.app/"
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
-              Lihat demo <i className="ph-thin ph-arrow-up-right" />
+              Lihat demo Digital Product <i className="ph-thin ph-arrow-up-right" />
+            </a>
+            <a
+              href="https://landing-page-skincare.netlify.app/"
+              style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              Lihat demo Skincare<i className="ph-thin ph-arrow-up-right" />
             </a>
           </div>
           <div style={{ ...cardStyle, padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <Image
-              src={stockManagementDashboard}
-              alt="Dashboard manajemen stok custom dengan laporan laba rugi dan penjualan"
+              src={weddingInvitation}
+              alt="Website undangan pernikahan Jim & Pam dengan galeri foto dan detail acara"
               width={1200}
               height={628}
               style={{ width: "100%", height: "auto", borderRadius: "var(--radius-md, 10px)", display: "block" }}
@@ -506,15 +517,15 @@ export default function Home() {
             />
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
-                Stock Management — Custom Dashboard
+                Wedding Invitation
               </h3>
               <Tag tone="accent">LIVE</Tag>
             </div>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
-              Cocok untuk yang punya gudang/distributor yang belum ada dashboard management stock.
+              Undangan pernikahan berbasis website, lengkap dengan galeri foto dan detail acara.
             </p>
             <a
-              href="#"
+              href="https://wedding-invitation.studioharel.id/"
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo <i className="ph-thin ph-arrow-up-right" />
@@ -532,19 +543,19 @@ export default function Home() {
           <Reveal index={1}>
             <div style={{ height: 1, background: "var(--divider-accent)", marginBottom: "var(--space-5)" }} />
             <h3 style={{ margin: "0 0 var(--space-3)", fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
-              Solo developer
+              Developer Berpengalaman
             </h3>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
-              Kamu bicara langsung dengan orang yang menulis kodenya — tanpa lapisan account manager.
+              6 tahun mengerjakan React di Tiket.com, sekarang fokus membangun produk untuk UMKM.
             </p>
           </Reveal>
           <Reveal index={2}>
             <div style={{ height: 1, background: "var(--divider-accent)", marginBottom: "var(--space-5)" }} />
             <h3 style={{ margin: "0 0 var(--space-3)", fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
-              Stack modern
+              Custom Code
             </h3>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
-              React dan Supabase, bukan template usang. Website ikut tumbuh seiring bisnis kamu.
+              Dibangun dari custom code, bukan template generik yang dipakai berulang-ulang.
             </p>
           </Reveal>
           <Reveal index={3}>
@@ -553,7 +564,7 @@ export default function Home() {
               Harga yang fair
             </h3>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
-              Sedang membangun portofolio, jadi harga klien awal masuk akal — kualitas kerja tetap penuh.
+              Kualitas developer berpengalaman, harga tetap masuk akal untuk UMKM.
             </p>
           </Reveal>
         </div>
@@ -627,7 +638,7 @@ export default function Home() {
               contact@studioharel.id
             </a>
             <span style={{ fontSize: "var(--text-2xs)", color: "var(--text-tertiary)" }}>
-              Placeholder: nomor WhatsApp &amp; email masih contoh.
+              +62 812-9256-7788 (WhatsApp)
             </span>
           </div>
         </Reveal>
@@ -649,7 +660,7 @@ export default function Home() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
             <Image src={logoMark} alt="Studio Harel" width={1085} height={492} style={{ height: 20, width: "auto", display: "block" }} />
-            <span style={{ fontWeight: 700, fontSize: 15, color: "var(--text-primary)" }}>Studio Harel</span>
+            <span style={{ fontWeight: 700, fontSize: 15, color: "var(--text-primary)" }}></span>
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent-primary)" }} />
             <span style={{ fontSize: "var(--text-2xs)", color: "var(--text-tertiary)" }}>© 2026</span>
           </div>
