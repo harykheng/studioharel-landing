@@ -44,7 +44,7 @@ export function UnderlineHighlight({ children }: { children: ReactNode }) {
           background: "var(--accent-primary)",
           transform: drawn ? "scaleX(1)" : "scaleX(0)",
           transformOrigin: "left",
-          transition: "transform .7s var(--ease-out) .3s",
+          transition: "transform .9s var(--ease-out) .9s",
         }}
       />
     </span>
