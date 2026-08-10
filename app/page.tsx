@@ -436,6 +436,7 @@ export default function Home() {
 
         <Reveal index={2} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "var(--space-6)" }}>
           <div
+            className="featured-card"
             style={{
               gridColumn: "1/-1",
               padding: "var(--space-8)",
@@ -444,13 +445,12 @@ export default function Home() {
               border: "1px solid var(--surface-glass-border)",
               boxShadow: "var(--shadow-card)",
               display: "grid",
-              gridTemplateColumns: "minmax(0,1.1fr) minmax(0,1fr)",
               gap: "var(--space-8)",
               alignItems: "center",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
                 <h3 style={{ margin: 0, fontSize: "var(--text-xl)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
                   Breva Cafe
                 </h3>
@@ -469,6 +469,7 @@ export default function Home() {
               </a>
             </div>
             <Image
+              className="featured-card-image"
               src={brevaCafeFlow}
               alt="Alur pemesanan online Breva Cafe: pilih pickup/delivery, menu, keranjang, dan detail pesanan"
               width={1200}
