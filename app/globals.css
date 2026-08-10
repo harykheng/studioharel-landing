@@ -173,3 +173,25 @@ textarea {
     scroll-behavior: auto;
   }
 }
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(33, 197, 212, 0), 0 0 0 0 rgba(22, 74, 248, 0);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(33, 197, 212, 0.3), 0 0 16px 4px rgba(22, 74, 248, 0.6);
+    border-color: var(--cyan-400);
+  }
+}
+
+.btn-glow {
+  animation: glow-pulse 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow {
+    animation: none;
+  }
+}

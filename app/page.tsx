@@ -73,7 +73,8 @@ export default function Home() {
             <span style={{ color: "var(--text-tertiary)" }}>&amp;</span>
             <a href="#kontak" style={{ color: "inherit" }}>Kontak</a>
           </div>
-          <Button variant="primary" size="sm" onClick={openWA}>
+          <Button variant="primary" size="sm" glow onClick={openWA}>
+            <i className="ph-bold ph-whatsapp-logo" style={{ fontSize: 16 }} />
             Chat
           </Button>
         </div>
