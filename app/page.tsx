@@ -454,7 +454,7 @@ export default function Home() {
               style={{ width: "100%", height: "auto", borderRadius: "var(--radius-md, 10px)", display: "block" }}
               sizes="(max-width: 700px) 100vw, 400px"
             />
-            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
                 Wedding Invitation
               </h3>
@@ -463,6 +463,12 @@ export default function Home() {
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
               Undangan pernikahan berbasis website, lengkap dengan galeri foto dan detail acara.
             </p>
+            <a
+              href="#"
+              style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              Lihat demo <i className="ph-thin ph-arrow-up-right" />
+            </a>
           </div>
           <div style={{ ...cardStyle, padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <Image
@@ -473,7 +479,7 @@ export default function Home() {
               style={{ width: "100%", height: "auto", borderRadius: "var(--radius-md, 10px)", display: "block" }}
               sizes="(max-width: 700px) 100vw, 400px"
             />
-            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
                 Landing Page — Digital Product
               </h3>
@@ -482,6 +488,12 @@ export default function Home() {
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
               Cocok untuk penjualan digital product atau penjualan barang tertentu — order langsung via WhatsApp.
             </p>
+            <a
+              href="#"
+              style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              Lihat demo <i className="ph-thin ph-arrow-up-right" />
+            </a>
           </div>
           <div style={{ ...cardStyle, padding: "var(--space-6)", display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             <Image
@@ -492,7 +504,7 @@ export default function Home() {
               style={{ width: "100%", height: "auto", borderRadius: "var(--radius-md, 10px)", display: "block" }}
               sizes="(max-width: 700px) 100vw, 400px"
             />
-            <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
               <h3 style={{ margin: 0, fontSize: "var(--text-lg)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
                 Stock Management — Custom Dashboard
               </h3>
@@ -501,6 +513,12 @@ export default function Home() {
             <p style={{ margin: 0, fontSize: "var(--text-sm)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
               Cocok untuk yang punya gudang/distributor yang belum ada dashboard management stock.
             </p>
+            <a
+              href="#"
+              style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
+            >
+              Lihat demo <i className="ph-thin ph-arrow-up-right" />
+            </a>
           </div>
         </Reveal>
       </section>
