@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Manrope, Instrument_Serif } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import "@phosphor-icons/web/thin";
 import "@phosphor-icons/web/bold";
+
+const GTM_ID = "GTM-KG5BPZBT";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,7 +41,18 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" className={`${manrope.variable} ${instrumentSerif.variable}`}>
-      <body>{children}</body>
+      <GoogleTagManager gtmId={GTM_ID} />
+      <body>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
