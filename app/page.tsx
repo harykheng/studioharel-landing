@@ -452,7 +452,7 @@ export default function Home() {
             <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "var(--space-3)" }}>
                 <h3 style={{ margin: 0, fontSize: "var(--text-xl)", fontWeight: "var(--weight-semibold)" as unknown as number, color: "var(--text-primary)" }}>
-                  Breva Cafe
+                  Ordi Cafe
                 </h3>
                 <Tag tone="accent">LIVE</Tag>
               </div>
@@ -460,7 +460,7 @@ export default function Home() {
                 Pemesanan online direct ke WhatsApp — pickup atau delivery, pilih menu, checkout, sampai notifikasi pesanan. Cocok untuk FnB lokal yang baru mulai usaha.
               </p>
               <a
-                href="https://brevacafe.vercel.app"
+                href="https://ordistore.studioharel.id"
                 target="_blank"
                 rel="noopener"
                 style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
