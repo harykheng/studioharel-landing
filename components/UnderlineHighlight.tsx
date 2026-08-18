@@ -34,7 +34,7 @@ export function UnderlineHighlight({ children }: { children: ReactNode }) {
   // box-decoration-break: clone so it draws separately under each wrapped
   // line instead of stretching across the whole multi-line bounding box.
   const style: CSSProperties = {
-    color: "var(--blue-500)",
+    color: "var(--orange-500)",
     backgroundImage: "linear-gradient(var(--accent-primary), var(--accent-primary))",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "0 100%",

@@ -11,10 +11,10 @@
   --gray-100: #d9d9df;
   --white: #f6f5ff;
 
-  --blue-700: #0500e6;
-  --blue-600: #164af8;
-  --blue-500: #2a86f4;
-  --blue-300: #7ea6ff;
+  --orange-700: #cc3d10;
+  --orange-600: #ff5a1f;
+  --orange-500: #ff7a47;
+  --orange-300: #ffb088;
   --lavender-100: #dddfff;
 
   --cyan-500: #12b6c9;
@@ -37,8 +37,8 @@
   --text-tertiary: var(--gray-500);
   --text-on-accent: var(--white);
 
-  --accent-primary: var(--blue-600);
-  --accent-primary-hover: var(--blue-500);
+  --accent-primary: var(--orange-600);
+  --accent-primary-hover: var(--orange-500);
   --accent-glow: var(--cyan-400);
   --accent-chip-bg: var(--lavender-100);
   --accent-chip-fg: var(--glass-purple-700);
@@ -47,7 +47,7 @@
   --border-strong: rgba(255, 255, 255, 0.16);
   --divider-accent: var(--cyan-500);
 
-  --focus-ring: var(--blue-500);
+  --focus-ring: var(--orange-500);
 
   /* typography */
   --font-sans: var(--font-manrope), -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -106,7 +106,7 @@
   /* effects */
   --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 30px rgba(0, 0, 0, 0.45);
   --shadow-pop: 0 20px 60px rgba(5, 0, 60, 0.5);
-  --glow-blue: 0 0 60px 10px rgba(22, 74, 248, 0.35);
+  --glow-orange: 0 0 60px 10px rgba(255, 90, 31, 0.35);
   --glow-cyan: 0 0 40px 4px rgba(33, 197, 212, 0.45);
   --blur-glass: 12px;
 
@@ -177,11 +177,11 @@ textarea {
 @keyframes glow-pulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(33, 197, 212, 0), 0 0 0 0 rgba(22, 74, 248, 0);
+    box-shadow: 0 0 0 0 rgba(33, 197, 212, 0), 0 0 0 0 rgba(255, 90, 31, 0);
     border-color: rgba(255, 255, 255, 0.2);
   }
   50% {
-    box-shadow: 0 0 0 3px rgba(33, 197, 212, 0.3), 0 0 16px 4px rgba(22, 74, 248, 0.6);
+    box-shadow: 0 0 0 3px rgba(33, 197, 212, 0.3), 0 0 16px 4px rgba(255, 90, 31, 0.6);
     border-color: var(--cyan-400);
   }
 }
