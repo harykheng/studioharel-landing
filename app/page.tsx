@@ -16,9 +16,24 @@ const stockManagementDashboard = "/assets/wedding-invitation.png";
 const landingDigitalProduct = "/assets/landing-digital-product.png";
 const weddingInvitation = "/assets/stock-management-dashboard.png";
 
-const openWA = () => window.open("https://wa.me/6281292567788", "_blank", "noopener");
+const pushDataLayerEvent = (event: string, params?: Record<string, unknown>) => {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event, ...params });
+};
+
+const openWA = (location: string) => {
+  pushDataLayerEvent("whatsapp_click", { click_location: location });
+  window.open("https://wa.me/6281292567788", "_blank", "noopener");
+};
+
 const goPortfolio = () => {
+  pushDataLayerEvent("view_portfolio_click", { click_location: "hero" });
   window.location.hash = "portofolio";
+};
+
+const trackDemoClick = (project: string) => {
+  pushDataLayerEvent("portfolio_demo_click", { project });
 };
 
 const cardStyle: React.CSSProperties = {
@@ -99,7 +114,7 @@ export default function Home() {
             >
               <i className={`ph-bold ${menuOpen ? "ph-x" : "ph-list"}`} />
             </button>
-            <Button variant="primary" size="sm" glow onClick={openWA}>
+            <Button variant="primary" size="sm" glow onClick={() => openWA("navbar")}>
               <i className="ph-bold ph-whatsapp-logo" style={{ fontSize: 16 }} />
               Chat
             </Button>
@@ -135,7 +150,7 @@ export default function Home() {
             height: 900,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle at 50% 50%, var(--blue-700), var(--blue-600) 40%, transparent 72%)",
+              "radial-gradient(circle at 50% 50%, var(--orange-700), var(--orange-600) 40%, transparent 72%)",
             filter: "blur(90px)",
             opacity: 0.55,
             pointerEvents: "none",
@@ -209,7 +224,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal index={3} style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-4)" }}>
-            <Button variant="primary" size="lg" onClick={openWA}>
+            <Button variant="primary" size="lg" onClick={() => openWA("hero")}>
               Chat via WhatsApp
             </Button>
             <Button variant="secondary" size="lg" onClick={goPortfolio}>
@@ -230,7 +245,7 @@ export default function Home() {
             width: 1000,
             height: 1000,
             borderRadius: "50%",
-            background: "radial-gradient(circle at 50% 50%, var(--blue-700), var(--blue-600) 35%, transparent 70%)",
+            background: "radial-gradient(circle at 50% 50%, var(--orange-700), var(--orange-600) 35%, transparent 70%)",
             filter: "blur(110px)",
             opacity: 0.5,
             pointerEvents: "none",
@@ -402,7 +417,7 @@ export default function Home() {
             width: 420,
             height: 420,
             borderRadius: "50%",
-            background: "radial-gradient(circle,var(--blue-600),transparent 70%)",
+            background: "radial-gradient(circle,var(--orange-600),transparent 70%)",
             filter: "blur(90px)",
             opacity: 0.3,
             pointerEvents: "none",
@@ -463,6 +478,7 @@ export default function Home() {
                 href="https://ordistore.studioharel.id"
                 target="_blank"
                 rel="noopener"
+                onClick={() => trackDemoClick("Ordi Cafe")}
                 style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
               >
                 Lihat live demo <i className="ph-thin ph-arrow-up-right" />
@@ -498,12 +514,14 @@ export default function Home() {
             </p>
             <a
               href="https://erp-distributor.vercel.app/"
+              onClick={() => trackDemoClick("Stock Management - Distribusi")}
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo Distribusi <i className="ph-thin ph-arrow-up-right" />
             </a>
             <a
               href="https://erp-demo-lovat.vercel.app/"
+              onClick={() => trackDemoClick("Stock Management - Kedai Kopi")}
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo Kedai Kopi<i className="ph-thin ph-arrow-up-right" />
@@ -529,12 +547,14 @@ export default function Home() {
             </p>
             <a
               href="https://porto-studio-harel.vercel.app/"
+              onClick={() => trackDemoClick("Landing Page - Digital Product")}
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo Digital Product <i className="ph-thin ph-arrow-up-right" />
             </a>
             <a
               href="https://landing-page-skincare.netlify.app/"
+              onClick={() => trackDemoClick("Landing Page - Skincare")}
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo Skincare<i className="ph-thin ph-arrow-up-right" />
@@ -560,6 +580,7 @@ export default function Home() {
             </p>
             <a
               href="https://wedding-invitation.studioharel.id/"
+              onClick={() => trackDemoClick("Wedding Invitation")}
               style={{ fontSize: "var(--text-sm)", fontWeight: "var(--weight-semibold)" as unknown as number, display: "inline-flex", alignItems: "center", gap: 6 }}
             >
               Lihat demo <i className="ph-thin ph-arrow-up-right" />
@@ -625,7 +646,7 @@ export default function Home() {
             width: 760,
             height: 760,
             borderRadius: "50%",
-            background: "radial-gradient(circle,var(--blue-600),transparent 70%)",
+            background: "radial-gradient(circle,var(--orange-600),transparent 70%)",
             filter: "blur(100px)",
             opacity: 0.35,
             pointerEvents: "none",
@@ -664,7 +685,7 @@ export default function Home() {
           <p style={{ margin: 0, maxWidth: "44ch", fontSize: "var(--text-base)", lineHeight: "var(--leading-relaxed)", color: "var(--text-secondary)", textWrap: "pretty" }}>
             Kirim pesan singkat soal bisnis dan kebutuhanmu. Kami balas dengan estimasi waktu dan biaya, tanpa basa-basi.
           </p>
-          <Button variant="primary" size="lg" onClick={openWA}>
+          <Button variant="primary" size="lg" onClick={() => openWA("kontak")}>
             Chat Sekarang
           </Button>
           <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-1)", alignItems: "center", marginTop: "var(--space-2)" }}>
