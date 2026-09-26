@@ -23,7 +23,7 @@
   top: 50%;
   width: clamp(118px, 13vw, 164px);
   height: auto;
-  aspect-ratio: 194 / 429;
+  aspect-ratio: 485 / 1054;
   object-fit: cover;
   object-position: top;
   border: 5px solid var(--ink);
