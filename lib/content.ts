@@ -5,7 +5,7 @@ export type Img = { src: string; alt: string; width: number; height: number };
 export type DemoLink = { label: string; href: string; project: string };
 
 export const proof = [
-  { value: "6 tahun", label: "React di Tiket.com" },
+  { value: "6 tahun", label: "React di perusahaan IT OTA" },
   { value: "6 proyek", label: "sudah live" },
   { value: "100%", label: "kode dibuat dari nol" },
 ];
@@ -165,7 +165,7 @@ export const steps = [
 ];
 
 export const experience = [
-  { when: "6 tahun", place: "Tiket.com", text: "Mengerjakan React di platform travel online." },
+  { when: "6 tahun", place: "Perusahaan IT OTA", text: "Mengerjakan React di platform travel online." },
   { when: "Sekarang", place: "Studio Harel", text: "Membangun website dan sistem untuk UMKM. 6 proyek sudah live." },
 ];
 

@@ -24,7 +24,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Studio Harel — Website & Dashboard untuk UMKM",
   description:
-    "Website dan sistem yang dibangun khusus untuk usahamu: landing page, pemesanan online, sampai dashboard stok dan invoice. Dikerjakan langsung oleh developer dengan pengalaman 6 tahun di Tiket.com.",
+    "Website dan sistem yang dibangun khusus untuk usahamu: landing page, pemesanan online, sampai dashboard stok dan invoice. Dikerjakan langsung oleh developer dengan pengalaman 6 tahun di perusahaan IT OTA.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },

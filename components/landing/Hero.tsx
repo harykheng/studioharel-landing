@@ -15,7 +15,7 @@ export function Hero() {
           </h1>
           <p className={styles.sub}>
             Landing page, pemesanan online, sampai dashboard stok dan invoice. Dirancang dan dikoding langsung oleh
-            developer dengan pengalaman 6 tahun di Tiket.com.
+            developer dengan pengalaman 6 tahun di perusahaan IT OTA.
           </p>
           <div className={styles.cta}>
             <WhatsAppLink location="hero">Konsultasi via WhatsApp</WhatsAppLink>
