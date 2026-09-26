@@ -1,0 +1,153 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.copy {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+}
+
+.list li {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.list h3 {
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 850;
+  font-size: clamp(22px, 2.2vw, 27px);
+  line-height: 1.05;
+}
+
+.list p {
+  font-size: 16px;
+  color: var(--ink-2);
+}
+
+/* experience card: a short CV line from Tiket.com to Studio Harel */
+.card {
+  padding: clamp(24px, 3.4vw, 40px);
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.card :global(.label) {
+  color: rgba(243, 243, 238, 0.62);
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 34px;
+}
+
+/* rail, then the orange line that runs down it when the card arrives */
+.timeline::before,
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: rgba(243, 243, 238, 0.22);
+}
+
+.timeline::after {
+  background: var(--orange);
+  transform-origin: top;
+}
+
+.card[data-inview="armed"] .timeline::after {
+  transform: scaleY(0);
+}
+
+.card[data-inview="in"] .timeline::after {
+  animation: run 1.2s var(--ease-out) 0.2s both;
+}
+
+@keyframes run {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.timeline li {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding-left: 36px;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  background: var(--ink);
+  z-index: 1;
+}
+
+.timeline li:last-child::before {
+  background: var(--orange);
+}
+
+.when {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.place {
+  font-family: var(--font-display);
+  font-stretch: 66%;
+  font-weight: 900;
+  font-size: clamp(40px, 4.6vw, 60px);
+  line-height: 0.95;
+}
+
+.timeline p {
+  max-width: 34ch;
+  color: rgba(243, 243, 238, 0.78);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

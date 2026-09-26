@@ -1,0 +1,124 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.head {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.list {
+  border-bottom: 1.5px solid var(--line-strong);
+}
+
+.item {
+  position: relative;
+  border-top: 1.5px solid var(--line-strong);
+}
+
+/* marker line on the question that is open */
+.item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20px;
+  bottom: 22px;
+  width: 3px;
+  background: var(--orange);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.item[open]::before {
+  transform: scaleY(1);
+}
+
+.q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-stretch: 75%;
+  font-weight: 800;
+  font-size: clamp(22px, 2.3vw, 28px);
+  line-height: 1.1;
+  transition: padding 0.3s var(--ease-out), color 0.15s;
+}
+
+.q::-webkit-details-marker {
+  display: none;
+}
+
+.q:hover {
+  color: var(--orange-dark);
+}
+
+.item[open] .q {
+  padding-left: 22px;
+}
+
+/* plus that turns into a minus */
+.icon {
+  position: relative;
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.icon::after {
+  transform: rotate(90deg);
+}
+
+.item[open] .icon::after {
+  transform: rotate(0deg);
+}
+
+.a {
+  max-width: 58ch;
+  padding: 0 0 26px 22px;
+  color: var(--ink-2);
+}
+
+.item[open] .a {
+  animation: open 0.4s var(--ease-out);
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .head {
+    position: static;
+  }
+}

@@ -1,31 +1,30 @@
-import type { Metadata } from "next";
-import { Manrope, Instrument_Serif } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
-import "@phosphor-icons/web/thin";
-import "@phosphor-icons/web/bold";
 
 const GTM_ID = "GTM-KG5BPZBT";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+// Archivo is variable on both weight and width, so one family covers the
+// condensed display headings and the normal-width body text.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Studio Harel — Website & Dashboard untuk UMKM",
   description:
-    "Website dan dashboard yang dibangun sesuai kebutuhan bisnismu. Tampilan dan fitur menyesuaikan cara kerja bisnismu, bukan sebaliknya.",
+    "Website dan sistem yang dibangun khusus untuk usahamu: landing page, pemesanan online, sampai dashboard stok dan invoice. Dikerjakan langsung oleh developer dengan pengalaman 6 tahun di Tiket.com.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -36,11 +35,15 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#F3F3EE",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" className={`${manrope.variable} ${instrumentSerif.variable}`}>
+    <html lang="id" className={`${archivo.variable} ${plexMono.variable}`}>
       <GoogleTagManager gtmId={GTM_ID} />
       <body>
         <noscript>

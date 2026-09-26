@@ -1,0 +1,92 @@
+.contact {
+  padding-block: clamp(80px, 11vw, 150px);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.inner {
+  display: grid;
+  gap: 28px;
+  justify-items: start;
+}
+
+.title {
+  font-size: clamp(44px, 7.4vw, 108px);
+}
+
+/* the closing headline rises out of a slot when it reaches the screen */
+.head[data-inview="armed"] .title {
+  clip-path: inset(100% 0 0 0);
+}
+
+.head[data-inview="in"] .title {
+  animation: rise 1s var(--ease-out) backwards;
+}
+
+@keyframes rise {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(0.3em);
+  }
+  to {
+    clip-path: inset(-20% -5% -20% -5%);
+    transform: none;
+  }
+}
+
+.sub {
+  max-width: 50ch;
+  font-size: clamp(17px, 1.7vw, 20px);
+  color: rgba(243, 243, 238, 0.78);
+  text-wrap: pretty;
+}
+
+/* on ink the key shadow is drawn in dark orange instead of ink */
+.actions :global(.btn) {
+  border-color: var(--orange);
+  box-shadow: 0 4px 0 var(--orange-dark);
+}
+
+.actions :global(.btn:hover) {
+  box-shadow: 0 5px 0 var(--orange-dark);
+}
+
+.actions :global(.btn:active) {
+  box-shadow: 0 0 0 var(--orange-dark);
+}
+
+.channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 56px;
+  width: 100%;
+  margin: 20px 0 0;
+  padding-top: 26px;
+  border-top: 1.5px solid rgba(243, 243, 238, 0.2);
+}
+
+.channels dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243, 243, 238, 0.58);
+}
+
+.channels dd {
+  margin: 4px 0 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.channels a {
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(243, 243, 238, 0.35);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.channels a:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}

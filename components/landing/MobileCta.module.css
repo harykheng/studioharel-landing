@@ -1,0 +1,34 @@
+.bar {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .bar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    padding: 10px var(--gutter) calc(14px + env(safe-area-inset-bottom, 0px));
+    background: var(--paper);
+    border-top: 1.5px solid var(--line);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition:
+      transform 0.35s var(--ease-out),
+      visibility 0s linear 0.35s;
+  }
+
+  .bar[data-show="true"] {
+    transform: none;
+    visibility: visible;
+    transition:
+      transform 0.35s var(--ease-out),
+      visibility 0s;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
