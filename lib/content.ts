@@ -4,21 +4,6 @@
 export type Img = { src: string; alt: string; width: number; height: number };
 export type DemoLink = { label: string; href: string; project: string };
 
-export const proof = [
-  { value: "6 tahun", label: "React di Tiket.com" },
-  { value: "6 proyek", label: "sudah live" },
-  { value: "100%", label: "kode dibuat dari nol" },
-];
-
-export const liveProjects = [
-  "Ordi Cafe",
-  "ERP Distribusi",
-  "Kedai Kopi",
-  "Digital Product",
-  "Skincare",
-  "Wedding Invitation",
-];
-
 export const work = {
   dashboard: [
     { src: "/work/dashboard-utama.png", alt: "Harel ERP untuk distributor: dashboard utama dengan tren penjualan, piutang, dan stok kritis", width: 1788, height: 1122 },
@@ -47,131 +32,61 @@ export const work = {
 export const ordiScreens = [work.ordi[0], work.ordi[2], work.ordi[3]];
 
 export const demos = {
-  ordi: { label: "Coba demo Ordi Cafe", href: "https://ordistore.studioharel.id", project: "Ordi Cafe" },
-  distribusi: { label: "Demo Distribusi", href: "https://erp-distributor.vercel.app/", project: "Stock Management - Distribusi" },
-  kedaiKopi: { label: "Demo Kedai Kopi", href: "https://erp-demo-lovat.vercel.app/", project: "Stock Management - Kedai Kopi" },
-  digitalProduct: { label: "Demo Digital Product", href: "https://porto-studio-harel.vercel.app/", project: "Landing Page - Digital Product" },
-  skincare: { label: "Demo Skincare", href: "https://landing-page-skincare.netlify.app/", project: "Landing Page - Skincare" },
+  ordi: { label: "Coba demo", href: "https://ordistore.studioharel.id", project: "Ordi Cafe" },
+  distribusi: { label: "Demo distribusi", href: "https://erp-distributor.vercel.app/", project: "Stock Management - Distribusi" },
+  kedaiKopi: { label: "Demo kedai kopi", href: "https://erp-demo-lovat.vercel.app/", project: "Stock Management - Kedai Kopi" },
+  digitalProduct: { label: "Demo digital product", href: "https://porto-studio-harel.vercel.app/", project: "Landing Page - Digital Product" },
+  skincare: { label: "Demo skincare", href: "https://landing-page-skincare.netlify.app/", project: "Landing Page - Skincare" },
   wedding: { label: "Demo undangan", href: "https://wedding-invitation.studioharel.id/", project: "Wedding Invitation" },
 } satisfies Record<string, DemoLink>;
 
-export const problems = [
-  {
-    quote: "Belum punya website, calon customer susah percaya toko kami serius.",
-    solution: "Landing page yang cepat dibuka dari HP, dengan tombol order langsung ke WhatsApp.",
-    service: "Landing page",
-  },
-  {
-    quote: "Udah punya website tapi susah diupdate sendiri, harus selalu minta bantuan orang.",
-    solution: "Website yang dibuat supaya isinya bisa kamu ubah sendiri.",
-    service: "Website custom",
-  },
-  {
-    quote: "Stok dan invoice masih manual di Excel, sering selisih data.",
-    solution: "Dashboard stok, faktur, dan laporan yang mengikuti alur kerja gudangmu.",
-    service: "Dashboard stok",
-  },
-  {
-    quote: "Mau bikin undangan online, tapi budget vendor terlalu mahal.",
-    solution: "Undangan berbasis website dengan galeri foto dan detail acara, dengan harga yang masuk akal.",
-    service: "Undangan online",
-  },
-];
-
-export type Service = {
-  name: string;
-  summary: string;
-  /** Leave undefined until the "mulai dari" price is decided; the list then shows a fallback label. */
-  price?: string;
-  examples: DemoLink[];
-  /** A desktop screenshot, or phone screens shown side by side. */
-  image?: Img;
-  phones?: Img[];
-};
-
-export const PRICE_FALLBACK = "Tanya estimasi";
-
-export const services: Service[] = [
-  {
-    name: "Landing page",
-    summary: "Satu halaman untuk jualan atau profil usaha. Ringan dibuka dari HP, dengan tombol order langsung ke WhatsApp.",
-    examples: [demos.digitalProduct, demos.skincare],
-    image: work.landingDigital,
-  },
-  {
-    name: "Order online via WhatsApp",
-    summary: "Menu, keranjang, pilih pickup atau delivery, lalu pesanan masuk ke WhatsApp dalam format yang rapi. Cocok untuk FnB lokal yang baru mulai usaha.",
-    examples: [demos.ordi],
-    phones: ordiScreens,
-  },
+/** Work shown in the gallery: a desktop screenshot, or phone screens side by side. */
+export const works: { name: string; category: string; image?: Img; phones?: Img[]; links: DemoLink[] }[] = [
+  { name: "Ordi Cafe", category: "Pemesanan online · FnB", phones: ordiScreens, links: [demos.ordi] },
   {
     name: "Dashboard stok & invoice",
-    summary: "Stok masuk dan keluar, faktur, stock opname, laporan laba rugi dan piutang. Alurnya mengikuti cara kerja timmu.",
-    examples: [demos.distribusi, demos.kedaiKopi],
-    image: work.dashboard[0],
-  },
-  {
-    name: "Undangan pernikahan online",
-    summary: "Galeri foto, detail akad dan resepsi, dan tombol lihat lokasi. Tinggal kirim link ke tamu.",
-    examples: [demos.wedding],
-    phones: work.wedding,
-  },
-  {
-    name: "Website custom",
-    summary: "Booking, antrian, atau sistem lain yang belum ada di daftar ini. Ceritakan alurnya, kami hitung estimasinya.",
-    examples: [],
-  },
-];
-
-export const featuredCase = {
-  name: "Ordi Cafe",
-  facts: [
-    { term: "Jenis usaha", value: "Kafe, FnB lokal" },
-    { term: "Cocok untuk", value: "FnB lokal yang baru mulai usaha" },
-    { term: "Fitur", value: "Pilih tanggal, pickup atau delivery, varian menu, kode promo, bayar via QRIS" },
-    { term: "Status", value: "Live di ordistore.studioharel.id" },
-  ],
-  screens: ordiScreens,
-  demo: demos.ordi,
-};
-
-export const otherCases: { name: string; summary: string; image?: Img; phones?: Img[]; links: DemoLink[] }[] = [
-  {
-    name: "Dashboard stok & invoice",
-    summary: "Untuk gudang atau distributor yang belum punya dashboard manajemen stok.",
+    category: "Sistem · Gudang & distributor",
     image: work.dashboard[0],
     links: [demos.distribusi, demos.kedaiKopi],
   },
   {
     name: "Landing page produk",
-    summary: "Untuk jualan produk digital atau barang tertentu, order langsung via WhatsApp.",
+    category: "Jualan · Order via WhatsApp",
     image: work.landingDigital,
     links: [demos.digitalProduct, demos.skincare],
   },
+  { name: "Undangan pernikahan", category: "Website · Galeri & detail acara", phones: work.wedding, links: [demos.wedding] },
+];
+
+export type Service = {
+  name: string;
+  summary: string;
+  /** Leave undefined until the "mulai dari" price is decided; the row then shows a fallback label. */
+  price?: string;
+};
+
+export const PRICE_FALLBACK = "Tanya estimasi";
+
+export const services: Service[] = [
+  { name: "Landing page", summary: "Satu halaman untuk jualan atau profil usaha, ringan dibuka dari HP, dengan tombol order ke WhatsApp." },
   {
-    name: "Undangan pernikahan",
-    summary: "Undangan berbasis website, lengkap dengan galeri foto dan detail acara.",
-    phones: work.wedding,
-    links: [demos.wedding],
+    name: "Order online via WhatsApp",
+    summary: "Menu, keranjang, pickup atau delivery, lalu pesanan masuk ke WhatsApp dalam format yang rapi.",
   },
+  { name: "Dashboard stok & invoice", summary: "Stok masuk dan keluar, faktur, stock opname, laporan laba rugi dan piutang." },
+  {
+    name: "Undangan pernikahan online",
+    summary: "Galeri foto, detail akad dan resepsi, dan tombol lihat lokasi. Tinggal kirim link ke tamu.",
+  },
+  { name: "Website custom", summary: "Booking, antrian, atau sistem lain yang belum ada di daftar ini." },
 ];
 
 export const steps = [
-  { title: "Konsultasi", text: "Ceritakan usaha, alur kerja, dan kebutuhanmu lewat WhatsApp.", result: "Daftar kebutuhan" },
-  { title: "Estimasi & desain", text: "Estimasi waktu dan biaya dikirim di awal, lalu desain halaman untuk kamu cek.", result: "Estimasi dan desain awal" },
-  { title: "Pengembangan", text: "Kode ditulis dari nol. Kamu dapat link preview untuk dicoba langsung di HP.", result: "Versi preview" },
-  { title: "Revisi", text: "Perubahan dikerjakan sampai sesuai dengan cara kerja usahamu.", result: "Versi final" },
-  { title: "Live", text: "Website online dan siap dipakai jualan.", result: "Website live" },
-];
-
-export const experience = [
-  { when: "6 tahun", place: "Tiket.com", text: "Mengerjakan React di platform travel online." },
-  { when: "Sekarang", place: "Studio Harel", text: "Membangun website dan sistem untuk UMKM. 6 proyek sudah live." },
-];
-
-export const strengths = [
-  { title: "Custom code", text: "Dibangun dari custom code, bukan template generik yang dipakai berulang-ulang." },
-  { title: "Harga yang fair", text: "Kualitas developer berpengalaman, harga tetap masuk akal untuk UMKM." },
+  { title: "Konsultasi", text: "Ceritakan usaha, alur kerja, dan kebutuhanmu lewat WhatsApp.", result: "daftar kebutuhan" },
+  { title: "Estimasi & desain", text: "Estimasi waktu dan biaya dikirim di awal, lalu desain untuk kamu cek.", result: "estimasi dan desain awal" },
+  { title: "Pengembangan", text: "Kode ditulis dari nol. Kamu dapat link preview untuk dicoba di HP.", result: "versi preview" },
+  { title: "Revisi", text: "Perubahan dikerjakan sampai sesuai cara kerja usahamu.", result: "versi final" },
+  { title: "Live", text: "Website online dan siap dipakai jualan.", result: "website live" },
 ];
 
 export const faqs = [

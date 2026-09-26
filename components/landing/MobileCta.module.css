@@ -11,12 +11,12 @@
     bottom: 0;
     z-index: 45;
     padding: 10px var(--gutter) calc(14px + env(safe-area-inset-bottom, 0px));
-    background: var(--paper);
-    border-top: 1.5px solid var(--line);
+    background: var(--bg);
+    border-top: 1px solid var(--line);
     transform: translateY(110%);
     visibility: hidden;
     transition:
-      transform 0.35s var(--ease-out),
+      transform 0.35s var(--ease),
       visibility 0s linear 0.35s;
   }
 
@@ -24,7 +24,7 @@
     transform: none;
     visibility: visible;
     transition:
-      transform 0.35s var(--ease-out),
+      transform 0.35s var(--ease),
       visibility 0s;
   }
 

@@ -1,27 +1,23 @@
-"use client";
-
-import Image from "next/image";
-import { useState } from "react";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
+import { Logo } from "./Logo";
 import styles from "./SiteHeader.module.css";
 
 const links = [
+  { href: "#portofolio", label: "Karya" },
   { href: "#layanan", label: "Layanan" },
-  { href: "#portofolio", label: "Studi kasus" },
   { href: "#proses", label: "Proses" },
-  { href: "#tanya", label: "Tanya jawab" },
+  { href: "#kontak", label: "Kontak" },
 ];
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
-
   return (
     <header className={styles.header}>
-      <div className={`container ${styles.bar}`}>
-        <a href="#hero" className={styles.logo}>
-          <Image src="/assets/logo-ink.png" alt="Studio Harel" width={1068} height={477} sizes="72px" loading="eager" />
+      <div className={`wrap ${styles.bar}`}>
+        {/* data-brand: the intro logo flies into this spot */}
+        <a href="#hero" className={styles.brand} aria-label="Studio Harel, ke atas" data-brand>
+          <Logo sizes="56px" eager />
         </a>
-        <nav aria-label="Navigasi utama" className={styles.nav}>
+        <nav aria-label="Navigasi utama" className={`${styles.nav} rv`}>
           <ul>
             {links.map((l) => (
               <li key={l.href}>
@@ -29,35 +25,11 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-        </nav>
-        <div className={styles.actions}>
-          <WhatsAppLink location="navbar" className="btn btn--sm">
-            Konsultasi
+          <WhatsAppLink location="navbar" className="pill pill--sm">
+            WhatsApp
           </WhatsAppLink>
-          <button
-            type="button"
-            className={styles.toggle}
-            aria-expanded={open}
-            aria-controls="menu-hp"
-            aria-label={open ? "Tutup menu" : "Buka menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-          </button>
-        </div>
+        </nav>
       </div>
-      <nav id="menu-hp" aria-label="Menu" className={styles.panel} data-open={open}>
-        <ul className="container">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </header>
   );
 }

@@ -1,0 +1,110 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(44px, 6vw, 80px) clamp(20px, 3vw, 40px);
+}
+
+/* the right column sits lower, so the gallery reads as staggered */
+.grid > li:nth-child(even) {
+  margin-top: clamp(0px, 9vw, 128px);
+}
+
+.card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+/* same 16:10 shape as the desktop screenshots, so nothing is cut at the sides */
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--raise);
+}
+
+.media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 1s var(--ease);
+}
+
+.card:hover .media > img {
+  transform: scale(1.035);
+}
+
+/* phone screens side by side in their real proportions, cut only at the bottom edge */
+.phones {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3.5%;
+  padding: 8% 6% 0;
+  background: radial-gradient(120% 90% at 50% 100%, #3a1a0f, var(--raise) 68%);
+}
+
+.phones > img {
+  width: 30%;
+  height: auto;
+  aspect-ratio: 485 / 1054;
+  border: 3px solid #34312d;
+  border-radius: 16px;
+  transition: transform 0.9s var(--ease);
+}
+
+.phones > img:nth-child(2) {
+  transform: translateY(-5%);
+}
+
+.card:hover .phones > img:nth-child(1) {
+  transform: translateY(-3%) rotate(-2deg);
+}
+
+.card:hover .phones > img:nth-child(2) {
+  transform: translateY(-9%);
+}
+
+.card:hover .phones > img:nth-child(3) {
+  transform: translateY(-3%) rotate(2deg);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.meta h3 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 760;
+  font-stretch: 92%;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.meta span {
+  font-size: 13.5px;
+  color: var(--fg-2);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  font-size: 15px;
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grid > li:nth-child(even) {
+    margin-top: 0;
+  }
+}

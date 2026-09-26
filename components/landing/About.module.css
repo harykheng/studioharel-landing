@@ -1,153 +1,123 @@
+.about {
+  padding-block: clamp(24px, 5vw, 72px) var(--band-space);
+}
+
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "collage notes"
+    "statement statement";
+  gap: 0 clamp(32px, 5vw, 80px);
+  align-items: start;
 }
 
-.copy {
-  display: grid;
-  gap: 20px;
-  align-content: start;
-}
-
-.list {
-  list-style: none;
-  margin: 12px 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px 28px;
-}
-
-.list li {
-  display: grid;
-  gap: 8px;
-  align-content: start;
-  padding-top: 16px;
-  border-top: 2px solid var(--ink);
-}
-
-.list h3 {
-  font-family: var(--font-display);
-  font-stretch: 75%;
-  font-weight: 850;
-  font-size: clamp(22px, 2.2vw, 27px);
-  line-height: 1.05;
-}
-
-.list p {
-  font-size: 16px;
-  color: var(--ink-2);
-}
-
-/* experience card: a short CV line from Tiket.com to Studio Harel */
-.card {
-  padding: clamp(24px, 3.4vw, 40px);
-  border-radius: 10px;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.card :global(.label) {
-  color: rgba(243, 243, 238, 0.62);
-}
-
-.timeline {
+/* dashboard with the phone laid over it, and the orange mark on the corner */
+.collage {
+  grid-area: collage;
   position: relative;
-  list-style: none;
-  margin: 24px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 34px;
+  padding-bottom: 20%;
 }
 
-/* rail, then the orange line that runs down it when the card arrives */
-.timeline::before,
-.timeline::after {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 12px;
-  bottom: 12px;
-  width: 2px;
-  background: rgba(243, 243, 238, 0.22);
-}
-
-.timeline::after {
-  background: var(--orange);
-  transform-origin: top;
-}
-
-.card[data-inview="armed"] .timeline::after {
-  transform: scaleY(0);
-}
-
-.card[data-inview="in"] .timeline::after {
-  animation: run 1.2s var(--ease-out) 0.2s both;
-}
-
-@keyframes run {
-  from {
-    transform: scaleY(0);
-  }
-}
-
-.timeline li {
+.shot {
   position: relative;
-  display: grid;
-  gap: 6px;
-  padding-left: 36px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--raise);
 }
 
-.timeline li::before {
-  content: "";
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.shotA {
+  width: 84%;
+  aspect-ratio: 16 / 10;
+}
+
+.shotB {
   position: absolute;
-  left: 0;
-  top: 4px;
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--orange);
-  border-radius: 50%;
-  background: var(--ink);
-  z-index: 1;
+  right: 0;
+  top: 12%;
+  width: 34%;
+  aspect-ratio: 388 / 720;
+  border: 4px solid var(--bg);
+  border-radius: 18px;
 }
 
-.timeline li:last-child::before {
-  background: var(--orange);
-}
-
-.when {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.mark {
+  position: absolute;
+  left: -1.5%;
+  bottom: 17%;
+  z-index: 2;
+  width: 15%;
+  aspect-ratio: 264 / 461;
   color: var(--orange);
 }
 
-.place {
-  font-family: var(--font-display);
-  font-stretch: 66%;
-  font-weight: 900;
-  font-size: clamp(40px, 4.6vw, 60px);
-  line-height: 0.95;
+.notes {
+  grid-area: notes;
+  display: grid;
+  gap: 28px;
+  padding-top: 6px;
 }
 
-.timeline p {
-  max-width: 34ch;
-  color: rgba(243, 243, 238, 0.78);
+.cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 28px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--fg-2);
 }
 
-@media (max-width: 860px) {
+.cols div {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.more {
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.more :global(.n) {
+  margin-right: 6px;
+  vertical-align: 0.45em;
+}
+
+.statement {
+  grid-area: statement;
+  max-width: 21ch;
+  margin-top: clamp(20px, 3vw, 40px);
+  font-size: clamp(28px, 3.6vw, 52px);
+  font-weight: 760;
+  font-stretch: 92%;
+  letter-spacing: -0.028em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+@media (max-width: 760px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "collage"
+      "statement"
+      "notes";
+  }
+
+  .notes {
+    padding-top: 40px;
   }
 }
 
-@media (max-width: 520px) {
-  .list {
+@media (max-width: 640px) {
+  .cols {
     grid-template-columns: minmax(0, 1fr);
   }
 }

@@ -1,28 +1,27 @@
 :root {
-  /* palette */
-  --paper: #f3f3ee;
-  --white: #fdfdfb;
-  --ink: #151518;
-  --ink-2: #4e4e58;
-  --ink-3: #80808a;
-  --line: rgba(21, 21, 24, 0.14);
-  --line-strong: rgba(21, 21, 24, 0.3);
+  color-scheme: dark;
+
+  /* palette: warm near-black, off-white, the logo orange */
+  --bg: #131211;
+  --raise: #1c1b19;
+  --fg: #eeebe5;
+  --fg-2: #a8a49d;
+  --fg-3: #77736c;
+  --line: rgba(238, 235, 229, 0.13);
   --orange: #ff3301;
-  --orange-dark: #b51a00;
+  --on-orange: #131211;
 
   /* type */
-  --font-display: var(--font-archivo), "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --font-body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
 
   /* layout */
-  --container: 1200px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --header-h: 68px;
-  --section-space: clamp(72px, 10vw, 136px);
+  --max: 1280px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --head-h: 72px;
+  --band-space: clamp(80px, 11vw, 160px);
 
   /* motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *,
@@ -32,19 +31,18 @@
 }
 
 html {
-  background: var(--paper);
-  color-scheme: light;
+  background: var(--bg);
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 16px);
+  scroll-padding-top: calc(var(--head-h) + 12px);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 17px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 16.5px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   /* skip font hinting: at some sizes it widens the space after "t" in Archivo */
@@ -53,9 +51,9 @@ body {
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 a {
@@ -65,9 +63,16 @@ a {
 h1,
 h2,
 h3,
-h4,
-p {
+p,
+figure {
   margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 button {
@@ -76,156 +81,140 @@ button {
 }
 
 :focus-visible {
-  outline: 2.5px solid var(--orange);
+  outline: 2px solid var(--orange);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 ::selection {
   background: var(--orange);
-  color: var(--ink);
+  color: var(--on-orange);
 }
 
 /* ---------- shared primitives ---------- */
 
-.container {
+.wrap {
   width: 100%;
-  max-width: var(--container);
+  max-width: var(--max);
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
-.section {
-  padding-block: var(--section-space);
+.band {
+  padding-block: var(--band-space);
+  border-top: 1px solid var(--line);
 }
 
-.section-head {
+.sec-head {
   display: grid;
-  gap: 16px;
-  max-width: 780px;
-  margin-bottom: clamp(32px, 5vw, 56px);
+  gap: 18px;
+  margin-bottom: clamp(36px, 5vw, 64px);
 }
 
 .display {
-  font-family: var(--font-display);
-  font-stretch: 62%;
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.01em;
-  word-spacing: 0.06em;
+  font-weight: 800;
+  font-stretch: 88%;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
   text-wrap: balance;
 }
 
 .h2 {
-  font-family: var(--font-display);
-  font-stretch: 66%;
-  font-weight: 850;
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 0.92;
-  word-spacing: 0.04em;
+  max-width: 20ch;
+  font-size: clamp(32px, 4.6vw, 62px);
+  font-weight: 760;
+  font-stretch: 92%;
+  letter-spacing: -0.03em;
+  line-height: 1;
   text-wrap: balance;
 }
 
-.lead {
-  max-width: 60ch;
-  font-size: clamp(16.5px, 1.7vw, 19px);
-  color: var(--ink-2);
-  text-wrap: pretty;
+/* section label with a footnote-style number, like an index */
+.eyebrow {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 14.5px;
+  font-weight: 650;
+  line-height: 1.3;
 }
 
-.label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-.accent {
+.n {
   color: var(--orange);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Primary button: orange with ink text (5:1 contrast), pressed like a key */
-.btn {
-  appearance: none;
+.pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 50px;
-  padding: 13px 22px;
-  border: 2px solid var(--ink);
-  border-radius: 6px;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 999px;
   background: var(--orange);
-  color: var(--ink);
-  font-family: var(--font-body);
+  color: var(--on-orange);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.1;
   text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 0 var(--ink);
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.2s;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 0 var(--ink);
-}
-
-.btn:active {
-  transform: translateY(4px);
-  box-shadow: 0 0 0 var(--ink);
-}
-
-.btn svg {
+.pill svg {
   width: 18px;
   height: 18px;
   flex: none;
 }
 
-.btn--sm {
+.pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -14px rgba(255, 51, 1, 0.8);
+}
+
+.pill:active {
+  transform: none;
+}
+
+.pill--sm {
   min-height: 40px;
-  padding: 8px 14px;
+  padding: 0 16px;
+  gap: 8px;
   font-size: 14px;
-  box-shadow: 0 3px 0 var(--ink);
 }
 
-.btn--sm:active {
-  transform: translateY(3px);
+.pill--sm svg {
+  width: 16px;
+  height: 16px;
 }
 
-.btn--light {
-  background: var(--white);
-}
-
-.btn--light:hover {
-  background: #fff;
-}
-
-.text-link {
+.link {
   font-weight: 650;
   text-decoration: none;
-  border-bottom: 2px solid currentColor;
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
+  padding-bottom: 3px;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat;
+  transition: color 0.2s;
 }
 
-.text-link:hover {
-  color: var(--orange-dark);
-  border-color: var(--orange);
+.link:hover {
+  color: var(--orange);
 }
 
 .skip-link {
   position: absolute;
   left: var(--gutter);
   top: 10px;
-  z-index: 100;
+  z-index: 110;
   padding: 10px 16px;
-  border-radius: 6px;
-  background: var(--ink);
-  color: var(--paper);
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
   font-weight: 650;
   text-decoration: none;
   transform: translateY(-160%);
@@ -245,6 +234,41 @@ button {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ---------- intro states (set on <html> by lib/intro.ts and Intro.tsx) ---------- */
+
+/* page parts wait under the intro, then arrive in order */
+html[data-intro] .rv {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+html[data-intro][data-reveal] .rv {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s var(--ease),
+    transform 1s var(--ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+/* the header logo is hidden while the big logo flies into its place */
+html[data-intro="short"]:not([data-landed]) [data-brand] {
+  opacity: 0;
+  animation: show 0.3s ease 5s forwards;
+}
+
+/* failsafe: if the intro script never runs, show everything after 5 seconds */
+html[data-intro]:not([data-reveal]) .rv {
+  animation: show 0.6s ease 5s forwards;
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,332 +1,48 @@
 .hero {
-  padding-top: clamp(32px, 5vw, 64px);
+  position: relative;
+  padding-block: clamp(56px, 9vw, 120px) clamp(72px, 9vw, 128px);
+  text-align: center;
 }
 
-.grid {
+.inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-  padding-bottom: clamp(40px, 6vw, 80px);
-}
-
-.copy {
-  display: grid;
-  gap: 24px;
-  align-content: start;
+  justify-items: center;
+  gap: 28px;
 }
 
 .title {
-  font-size: clamp(54px, 6.3vw, 92px);
+  font-size: clamp(50px, 9.4vw, 142px);
+}
+
+.title span {
+  display: block;
 }
 
 .sub {
-  max-width: 46ch;
-  font-size: clamp(16.5px, 1.6vw, 19px);
-  color: var(--ink-2);
-  text-wrap: pretty;
+  max-width: 32ch;
+  font-size: clamp(18px, 1.9vw, 22px);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 .cta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 16px 28px;
+  margin-top: 4px;
 }
 
-.proof {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 18px;
-  margin: 8px 0 0;
-  border-top: 2px solid var(--ink);
-}
-
-.proof div {
-  padding-top: 14px;
-}
-
-.proof dt {
-  font-family: var(--font-display);
-  font-stretch: 70%;
-  font-weight: 900;
-  font-size: clamp(30px, 3.4vw, 44px);
-  line-height: 1;
-}
-
-.proof dd {
-  margin: 6px 0 0;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-/* work stack: browser window with a dashboard + phone with order screens */
-.stack {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 0.82;
-  margin: 0;
-}
-
-.win {
+.plus {
   position: absolute;
-  left: 0;
-  top: 2%;
-  width: 88%;
-  border: 2px solid var(--ink);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--white);
-  box-shadow: 0 30px 50px -30px rgba(21, 21, 24, 0.5);
-  animation: settle-win 1s var(--ease-out) both;
-}
-
-.winBar {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  height: 22px;
-  padding: 0 9px;
-  border-bottom: 2px solid var(--ink);
-}
-
-.winBar i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink);
-}
-
-.winView {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-/* four pages of the dashboard take turns, as if someone is clicking through it */
-.winView img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-  opacity: 0;
-  animation: win-cycle 14s infinite;
-}
-
-.winView img:nth-child(1) {
-  opacity: 1;
-}
-
-.winView img:nth-child(2) {
-  animation-delay: 3.5s;
-}
-
-.winView img:nth-child(3) {
-  animation-delay: 7s;
-}
-
-.winView img:nth-child(4) {
-  animation-delay: 10.5s;
-}
-
-.phone {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 31%;
-  aspect-ratio: 485 / 1054;
-  border: 5px solid var(--ink);
-  border-radius: 22px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 30px 40px -24px rgba(21, 21, 24, 0.55);
-  animation: settle-phone 1s var(--ease-out) 0.15s both;
-}
-
-.phone img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  opacity: 0;
-  animation: screen-cycle 9s infinite;
-}
-
-.phone img:nth-child(1) {
-  opacity: 1;
-}
-
-.phone img:nth-child(2) {
-  animation-delay: 3s;
-}
-
-.phone img:nth-child(3) {
-  animation-delay: 6s;
-}
-
-.cap {
-  position: absolute;
-  left: 0;
-  bottom: 1%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  max-width: 62%;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-.cap span::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
-  background: var(--orange);
-}
-
-@keyframes win-cycle {
-  0% {
-    opacity: 0;
-  }
-  3%,
-  25% {
-    opacity: 1;
-  }
-  28%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes screen-cycle {
-  0% {
-    opacity: 0;
-  }
-  5%,
-  33% {
-    opacity: 1;
-  }
-  38%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes settle-win {
-  from {
-    transform: translateY(22px) rotate(-1.2deg);
-  }
-}
-
-@keyframes settle-phone {
-  from {
-    transform: translateY(34px) rotate(3deg);
-  }
-}
-
-/* live projects running under the hero */
-.marquee {
-  border-block: 2px solid var(--ink);
-  overflow: hidden;
-  padding-block: 14px;
-  background: var(--white);
-}
-
-.track {
-  display: flex;
-  width: max-content;
-  animation: marquee 50s linear infinite;
-}
-
-.marquee:hover .track {
-  animation-play-state: paused;
-}
-
-.track p {
-  margin: 0;
-  padding-right: 0.5em;
-  white-space: nowrap;
-  font-family: var(--font-display);
-  font-stretch: 70%;
-  font-weight: 900;
-  font-size: clamp(26px, 3.4vw, 44px);
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1.4px var(--ink);
-}
-
-.track b {
+  right: var(--gutter);
+  top: 28px;
   color: var(--orange);
-  -webkit-text-stroke: 0;
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 860px) {
-  .grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 560px) {
-  .stack {
-    aspect-ratio: 1 / 0.95;
-  }
-
-  .proof {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .proof div {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .proof dd {
-    margin: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none !important;
-  }
-
-  .track p + p {
-    display: none;
-  }
-
-  .win,
-  .phone,
-  .winView img,
-  .phone img {
-    animation: none !important;
-  }
-
-  .phone img:not(:first-child),
-  .winView img:not(:first-child) {
-    opacity: 0;
-  }
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+  pointer-events: none;
 }

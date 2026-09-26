@@ -1,0 +1,96 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  place-items: center;
+  background: var(--bg);
+}
+
+:global(html[data-intro]) .intro {
+  display: grid;
+}
+
+:global(html[data-landed]) .intro {
+  display: none;
+}
+
+/* failsafe: if the timeline never runs, get out of the way after 5 seconds */
+:global(html[data-intro]:not([data-landed])) .intro {
+  animation: away 0.3s ease 5s forwards;
+}
+
+@keyframes away {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.stage {
+  display: grid;
+  justify-items: center;
+  gap: 32px;
+}
+
+.logo {
+  width: min(74vw, 540px);
+}
+
+/* full version: a line that fills during the two seconds */
+.bar {
+  width: min(44vw, 220px);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--line);
+  visibility: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+:global(html[data-intro="full"]) .bar {
+  visibility: visible;
+}
+
+:global(html[data-intro="full"]) .bar i {
+  animation: fill 2s linear forwards;
+}
+
+@keyframes fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* orange edge on the curtain while it lifts */
+.intro::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--orange);
+  opacity: 0;
+}
+
+.lifting::after {
+  opacity: 1;
+}
+
+.hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--fg-3);
+}

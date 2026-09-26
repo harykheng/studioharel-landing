@@ -1,23 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Archivo } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { introScript } from "@/lib/intro";
 import "./globals.css";
 
 const GTM_ID = "GTM-KG5BPZBT";
 
-// Archivo is variable on both weight and width, so one family covers the
-// condensed display headings and the normal-width body text.
+// Archivo is variable on both weight and width; the italic is used for the hero line.
 const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
   axes: ["wdth"],
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -36,16 +30,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F3F3EE",
+  themeColor: "#131211",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="id" className={`${archivo.variable} ${plexMono.variable}`}>
+    // the intro script below marks <html> before hydration
+    <html lang="id" className={archivo.variable} suppressHydrationWarning>
       <GoogleTagManager gtmId={GTM_ID} />
       <body>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

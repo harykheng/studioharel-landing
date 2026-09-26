@@ -32,7 +32,7 @@ export function MobileCta() {
 
   return (
     <div ref={ref} className={styles.bar} data-show="false">
-      <WhatsAppLink location="mobile_bar" className={`btn ${styles.btn}`}>
+      <WhatsAppLink location="mobile_bar" className={`pill ${styles.btn}`}>
         Konsultasi via WhatsApp
       </WhatsAppLink>
     </div>

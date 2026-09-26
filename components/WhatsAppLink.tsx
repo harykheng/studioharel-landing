@@ -19,7 +19,7 @@ export function WhatsAppLink({
   location,
   message,
   params,
-  className = "btn",
+  className = "pill",
   icon = true,
   children,
 }: {
