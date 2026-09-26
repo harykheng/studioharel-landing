@@ -103,17 +103,37 @@
 }
 
 .winView {
-  aspect-ratio: 16 / 10.5;
+  position: relative;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
-/* the screenshot pans slowly, as if someone is scrolling the dashboard */
+/* four pages of the dashboard take turns, as if someone is clicking through it */
 .winView img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 0;
-  animation: pan 14s ease-in-out infinite;
+  object-position: top left;
+  opacity: 0;
+  animation: win-cycle 14s infinite;
+}
+
+.winView img:nth-child(1) {
+  opacity: 1;
+}
+
+.winView img:nth-child(2) {
+  animation-delay: 3.5s;
+}
+
+.winView img:nth-child(3) {
+  animation-delay: 7s;
+}
+
+.winView img:nth-child(4) {
+  animation-delay: 10.5s;
 }
 
 .phone {
@@ -178,17 +198,17 @@
   background: var(--orange);
 }
 
-@keyframes pan {
-  0%,
-  12% {
-    object-position: 50% 0;
+@keyframes win-cycle {
+  0% {
+    opacity: 0;
   }
-  48%,
-  62% {
-    object-position: 50% 100%;
+  3%,
+  25% {
+    opacity: 1;
   }
+  28%,
   100% {
-    object-position: 50% 0;
+    opacity: 0;
   }
 }
 
@@ -305,7 +325,8 @@
     animation: none !important;
   }
 
-  .phone img:not(:first-child) {
+  .phone img:not(:first-child),
+  .winView img:not(:first-child) {
     opacity: 0;
   }
 }

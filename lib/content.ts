@@ -20,17 +20,31 @@ export const liveProjects = [
 ];
 
 export const work = {
-  dashboard: { src: "/work/dashboard-stok.jpg", alt: "Dashboard laporan laba rugi untuk distributor", width: 1118, height: 842 },
-  landing: { src: "/work/landing-digital-product.jpg", alt: "Landing page penjualan produk digital", width: 910, height: 810 },
-  wedding: { src: "/work/undangan-pernikahan.jpg", alt: "Website undangan pernikahan dengan galeri foto", width: 1234, height: 804 },
+  dashboard: [
+    { src: "/work/dashboard-utama.png", alt: "Harel ERP untuk distributor: dashboard utama dengan tren penjualan, piutang, dan stok kritis", width: 1788, height: 1122 },
+    { src: "/work/dashboard-laba-rugi.png", alt: "Harel ERP: laporan laba rugi per kategori produk", width: 1799, height: 1124 },
+    { src: "/work/dashboard-order.png", alt: "Harel ERP: daftar order penjualan dengan status pengiriman", width: 1798, height: 1125 },
+    { src: "/work/dashboard-produk.png", alt: "Harel ERP: katalog produk dengan harga dan status stok", width: 1788, height: 1123 },
+  ],
+  kedaiKopi: { src: "/work/kedai-kopi-order.png", alt: "Harel ERP untuk kedai kopi: papan status order dari baru sampai selesai", width: 1797, height: 1121 },
+  landingDigital: { src: "/work/landing-digital-product.png", alt: "Landing page produk digital untuk mencatat untung rugi toko", width: 1797, height: 1125 },
+  landingSkincare: { src: "/work/landing-skincare.png", alt: "Landing page brand skincare Arunika", width: 1799, height: 1125 },
   ordi: [
-    { src: "/work/ordi-1.jpg", alt: "Ordi Cafe: pilih pickup atau delivery", width: 388, height: 858 },
-    { src: "/work/ordi-2.jpg", alt: "Ordi Cafe: pilih tanggal pickup", width: 386, height: 858 },
-    { src: "/work/ordi-3.jpg", alt: "Ordi Cafe: daftar menu", width: 386, height: 858 },
-    { src: "/work/ordi-4.jpg", alt: "Ordi Cafe: atur ukuran dan jumlah", width: 386, height: 858 },
-    { src: "/work/ordi-5.jpg", alt: "Ordi Cafe: detail pesanan dan kirim via WhatsApp", width: 384, height: 858 },
+    { src: "/work/ordi-pickup.png", alt: "Ordi Cafe: pilih pickup atau delivery", width: 485, height: 1054 },
+    { src: "/work/ordi-tanggal.png", alt: "Ordi Cafe: pilih tanggal delivery", width: 485, height: 1052 },
+    { src: "/work/ordi-menu.png", alt: "Ordi Cafe: daftar menu", width: 484, height: 1053 },
+    { src: "/work/ordi-varian.png", alt: "Ordi Cafe: pilih ukuran, varian, dan jumlah", width: 483, height: 1051 },
+    { src: "/work/ordi-pesanan.png", alt: "Ordi Cafe: detail pesanan, ongkir, dan bayar via QRIS", width: 483, height: 1051 },
+  ],
+  wedding: [
+    { src: "/work/undangan-pembuka.png", alt: "Undangan pernikahan online: halaman pembuka", width: 485, height: 1053 },
+    { src: "/work/undangan-cerita.png", alt: "Undangan pernikahan online: cerita dan galeri foto", width: 486, height: 1054 },
+    { src: "/work/undangan-acara.png", alt: "Undangan pernikahan online: jadwal akad dan resepsi dengan tombol lokasi", width: 486, height: 1053 },
   ],
 } satisfies Record<string, Img | Img[]>;
+
+/** The three Ordi screens shown together: choose, browse, customise. */
+export const ordiScreens = [work.ordi[0], work.ordi[2], work.ordi[3]];
 
 export const demos = {
   ordi: { label: "Coba demo Ordi Cafe", href: "https://ordistore.studioharel.id", project: "Ordi Cafe" },
@@ -70,7 +84,9 @@ export type Service = {
   /** Leave undefined until the "mulai dari" price is decided; the list then shows a fallback label. */
   price?: string;
   examples: DemoLink[];
+  /** A desktop screenshot, or phone screens shown side by side. */
   image?: Img;
+  phones?: Img[];
 };
 
 export const PRICE_FALLBACK = "Tanya estimasi";
@@ -80,25 +96,25 @@ export const services: Service[] = [
     name: "Landing page",
     summary: "Satu halaman untuk jualan atau profil usaha. Ringan dibuka dari HP, dengan tombol order langsung ke WhatsApp.",
     examples: [demos.digitalProduct, demos.skincare],
-    image: work.landing,
+    image: work.landingDigital,
   },
   {
     name: "Order online via WhatsApp",
     summary: "Menu, keranjang, pilih pickup atau delivery, lalu pesanan masuk ke WhatsApp dalam format yang rapi. Cocok untuk FnB lokal yang baru mulai usaha.",
     examples: [demos.ordi],
-    image: work.ordi[0],
+    phones: ordiScreens,
   },
   {
     name: "Dashboard stok & invoice",
     summary: "Stok masuk dan keluar, faktur, stock opname, laporan laba rugi dan piutang. Alurnya mengikuti cara kerja timmu.",
     examples: [demos.distribusi, demos.kedaiKopi],
-    image: work.dashboard,
+    image: work.dashboard[0],
   },
   {
     name: "Undangan pernikahan online",
     summary: "Galeri foto, detail akad dan resepsi, dan tombol lihat lokasi. Tinggal kirim link ke tamu.",
     examples: [demos.wedding],
-    image: work.wedding,
+    phones: work.wedding,
   },
   {
     name: "Website custom",
@@ -112,30 +128,30 @@ export const featuredCase = {
   facts: [
     { term: "Jenis usaha", value: "Kafe, FnB lokal" },
     { term: "Cocok untuk", value: "FnB lokal yang baru mulai usaha" },
-    { term: "Fitur", value: "Menu online, pickup atau delivery, checkout ke WhatsApp" },
+    { term: "Fitur", value: "Pilih tanggal, pickup atau delivery, varian menu, kode promo, bayar via QRIS" },
     { term: "Status", value: "Live di ordistore.studioharel.id" },
   ],
-  screens: [work.ordi[0], work.ordi[2], work.ordi[4]],
+  screens: ordiScreens,
   demo: demos.ordi,
 };
 
-export const otherCases = [
+export const otherCases: { name: string; summary: string; image?: Img; phones?: Img[]; links: DemoLink[] }[] = [
   {
     name: "Dashboard stok & invoice",
     summary: "Untuk gudang atau distributor yang belum punya dashboard manajemen stok.",
-    image: work.dashboard,
+    image: work.dashboard[0],
     links: [demos.distribusi, demos.kedaiKopi],
   },
   {
     name: "Landing page produk",
     summary: "Untuk jualan produk digital atau barang tertentu, order langsung via WhatsApp.",
-    image: work.landing,
+    image: work.landingDigital,
     links: [demos.digitalProduct, demos.skincare],
   },
   {
     name: "Undangan pernikahan",
     summary: "Undangan berbasis website, lengkap dengan galeri foto dan detail acara.",
-    image: work.wedding,
+    phones: work.wedding,
     links: [demos.wedding],
   },
 ];

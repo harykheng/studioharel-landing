@@ -2,6 +2,7 @@ import Image from "next/image";
 import { featuredCase, otherCases } from "@/lib/content";
 import { InView } from "@/components/InView";
 import { TrackedLink } from "@/components/TrackedLink";
+import { PhoneSet } from "./PhoneSet";
 import styles from "./CaseStudies.module.css";
 
 const phoneClass = [styles.left, styles.middle, styles.right];
@@ -28,6 +29,7 @@ export function CaseStudies() {
                 width={s.width}
                 height={s.height}
                 sizes="(max-width: 820px) 34vw, 170px"
+                quality={90}
               />
             ))}
           </div>
@@ -59,19 +61,19 @@ export function CaseStudies() {
           {otherCases.map((c) => (
             <li key={c.name} className={styles.card}>
               <div className={styles.frame}>
-                <div className={styles.frameBar} aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <Image
-                  className={styles.shot}
-                  src={c.image.src}
-                  alt={c.image.alt}
-                  width={c.image.width}
-                  height={c.image.height}
-                  sizes="(max-width: 760px) 92vw, 380px"
-                />
+                {c.image ? (
+                  <Image
+                    className={styles.shot}
+                    src={c.image.src}
+                    alt={c.image.alt}
+                    width={c.image.width}
+                    height={c.image.height}
+                    sizes="(max-width: 700px) 92vw, 380px"
+                    quality={90}
+                  />
+                ) : (
+                  c.phones && <PhoneSet phones={c.phones} sizes="(max-width: 700px) 26vw, 110px" />
+                )}
               </div>
               <h3 className={styles.cardTitle}>{c.name}</h3>
               <p className={styles.cardText}>{c.summary}</p>

@@ -1,12 +1,21 @@
 "use client";
 
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { useEffect, useRef } from "react";
-import { PRICE_FALLBACK, services } from "@/lib/content";
+import { PRICE_FALLBACK, services, type Img } from "@/lib/content";
 import { trackEvent } from "@/lib/tracking";
 import { TrackedLink } from "@/components/TrackedLink";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
+import { PhoneSet } from "./PhoneSet";
 import styles from "./Services.module.css";
+
+// Optimised URL for the small hover preview (270px wide box).
+function previewSrc(img?: Img) {
+  if (!img) return undefined;
+  const width = 270;
+  const height = Math.round((width * img.height) / img.width);
+  return getImageProps({ src: img.src, alt: "", width, height, quality: 90 }).props.src;
+}
 
 export function Services() {
   const listRef = useRef<HTMLUListElement>(null);
@@ -91,7 +100,7 @@ export function Services() {
                   if (e.currentTarget.open) trackEvent("service_expand", { service: s.name });
                 }}
               >
-                <summary className={styles.head} data-preview={s.image?.src}>
+                <summary className={styles.head} data-preview={previewSrc(s.image ?? s.phones?.[0])}>
                   <span className={styles.name}>{s.name}</span>
                   <span className={styles.dots} aria-hidden="true" />
                   <span className={styles.price}>{s.price ? `Mulai ${s.price}` : PRICE_FALLBACK}</span>
@@ -125,7 +134,7 @@ export function Services() {
                       Tanya soal layanan ini
                     </WhatsAppLink>
                   </div>
-                  {s.image && (
+                  {s.image ? (
                     <Image
                       className={styles.thumb}
                       src={s.image.src}
@@ -133,7 +142,12 @@ export function Services() {
                       width={s.image.width}
                       height={s.image.height}
                       sizes="(max-width: 760px) 90vw, 420px"
+                      quality={90}
                     />
+                  ) : (
+                    s.phones && (
+                      <PhoneSet phones={s.phones} className={styles.thumbSet} sizes="(max-width: 760px) 26vw, 120px" />
+                    )
                   )}
                 </div>
               </details>

@@ -136,6 +136,13 @@
   border-radius: 6px;
 }
 
+.body > .thumbSet {
+  aspect-ratio: auto;
+  height: 240px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+}
+
 /* cursor preview (desktop, closed rows only) */
 .preview {
   position: fixed;

@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import { liveProjects, proof, work } from "@/lib/content";
+import { liveProjects, ordiScreens, proof, work } from "@/lib/content";
 import { TrackedLink } from "@/components/TrackedLink";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import styles from "./Hero.module.css";
-
-const phoneScreens = [work.ordi[0], work.ordi[2], work.ordi[4]];
 
 export function Hero() {
   return (
@@ -48,18 +46,22 @@ export function Hero() {
               <i />
             </div>
             <div className={styles.winView}>
-              <Image
-                src={work.dashboard.src}
-                alt={work.dashboard.alt}
-                width={work.dashboard.width}
-                height={work.dashboard.height}
-                sizes="(max-width: 860px) 88vw, 520px"
-                loading="eager"
-              />
+              {work.dashboard.map((s, i) => (
+                <Image
+                  key={s.src}
+                  src={s.src}
+                  alt={i === 0 ? s.alt : ""}
+                  width={s.width}
+                  height={s.height}
+                  sizes="(max-width: 860px) 88vw, 520px"
+                  quality={90}
+                  loading={i === 0 ? "eager" : "lazy"}
+                />
+              ))}
             </div>
           </div>
           <div className={styles.phone}>
-            {phoneScreens.map((s, i) => (
+            {ordiScreens.map((s, i) => (
               <Image
                 key={s.src}
                 src={s.src}
@@ -67,6 +69,7 @@ export function Hero() {
                 width={s.width}
                 height={s.height}
                 sizes="(max-width: 860px) 30vw, 170px"
+                quality={90}
                 loading={i === 0 ? "eager" : "lazy"}
               />
             ))}

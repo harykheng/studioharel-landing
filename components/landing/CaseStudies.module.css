@@ -138,27 +138,11 @@
   box-shadow: 0 20px 30px -22px rgba(21, 21, 24, 0.5);
 }
 
-.frameBar {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  height: 20px;
-  padding: 0 8px;
-  border-bottom: 2px solid var(--ink);
-}
-
-.frameBar i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink);
-}
-
 .shot {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  object-position: top;
+  object-position: top left;
 }
 
 .cardTitle {

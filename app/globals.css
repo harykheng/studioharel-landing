@@ -47,6 +47,8 @@ body {
   font-size: 17px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* skip font hinting: at some sizes it widens the space after "t" in Archivo */
+  text-rendering: geometricPrecision;
   overflow-x: clip;
 }
 
