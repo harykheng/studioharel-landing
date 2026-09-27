@@ -21,10 +21,30 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const title = "Studio Harel — Website & Dashboard untuk UMKM";
+const description =
+  "Website dan sistem yang dibangun khusus untuk usahamu: landing page, pemesanan online, sampai dashboard stok dan invoice. Dikerjakan langsung oleh developer dengan pengalaman 6 tahun di perusahaan IT OTA.";
+
+// The share image is app/opengraph-image.png; Next adds its tags. On Vercel preview
+// deployments Next points it at the preview URL, in production at metadataBase.
 export const metadata: Metadata = {
-  title: "Studio Harel — Website & Dashboard untuk UMKM",
-  description:
-    "Website dan sistem yang dibangun khusus untuk usahamu: landing page, pemesanan online, sampai dashboard stok dan invoice. Dikerjakan langsung oleh developer dengan pengalaman 6 tahun di perusahaan IT OTA.",
+  metadataBase: new URL("https://studioharel.id"),
+  title,
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "/",
+    siteName: "Studio Harel",
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
